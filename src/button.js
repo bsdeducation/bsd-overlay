@@ -1,6 +1,8 @@
 import fa from 'fontawesome';
-import { createElement, createWidget } from './widget';
-import styles from './style.css'
+import { createWidget } from './widget';
+import styles from './style.css';
+
+const supportedStyles = ['primary', 'success', 'danger'];
 
 export function button(props) {
   const { position, id, icon, style, text, size, tooltips, onClick } = props;
@@ -8,11 +10,12 @@ export function button(props) {
   const w = createWidget('button', { id });
 
   if (icon) {
-    w.innerHTML += '<span class="fa">' + fa[icon] + '</span>';
-    // w.appendChild(
-    //   createElement({ element: 'span', className: styles.fa, innerHTML: fa[icon] })
-    // );
-    w.className += ' ' + styles.icon;
+    if (fa[icon]) {
+      w.innerHTML += '<span class="fa">' + fa[icon] + '</span>';
+      w.className += ' ' + styles.icon;
+    } else {
+      console.error(`Unknown icon '${icon}'.`);
+    }
   }
   if (text) {
     w.innerHTML += text;
@@ -25,6 +28,9 @@ export function button(props) {
     }
     //  top: ${position.top}; right: 30px;'
     w.style = s;
+  }
+  if (style && supportedStyles.indexOf(style) >= 0) {
+    w.className += ' ' + styles.styled + ' ' + styles[style];
   }
   if (onClick) {
     w.addEventListener('click', onClick, false);

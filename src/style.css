@@ -1,6 +1,6 @@
 /* overlay styles */
 #root {
-  color: #4a4a4a;
+  color: #111111;
   font-family: Avenir;
 }
 
@@ -34,4 +34,16 @@
   height: 48px;
   width: 48px;
   border-radius: 50%;
+}
+#root .button.styled {
+  color: white;
+}
+#root .button.styled.primary {
+  background-color: #4bb7f6;
+}
+#root .button.styled.success {
+  background-color: #4cb784;
+}
+#root .button.styled.danger {
+  background-color: #d36d6b;
 }
