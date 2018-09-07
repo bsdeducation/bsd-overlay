@@ -1,0 +1,28 @@
+{
+  "name": "lbui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "example": "open ./example/index.html"
+  },
+  "dependencies": {
+    "documentjs": "0.5.4",
+    "fontawesome": "4.7.2"
+  },
+  "devDependencies": {
+    "concurrently": "4.0.1",
+    "postcss-nested": "3.0.0",
+    "rollup": "0.65.2",
+    "rollup-plugin-commonjs": "9.1.6",
+    "rollup-plugin-eslint": "5.0.0",
+    "rollup-plugin-node-resolve": "3.4.0",
+    "rollup-plugin-postcss-modules": "1.0.8",
+    "rollup-plugin-typescript2": "0.17.0",
+    "tslib": "1.9.3",
+    "tslint": "5.11.0",
+    "typescript": "3.0.3"
+  }
+}

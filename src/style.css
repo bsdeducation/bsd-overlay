@@ -1,0 +1,37 @@
+/* overlay styles */
+#root {
+  color: #4a4a4a;
+  font-family: Avenir;
+}
+
+/* button widget */
+#root .button {
+  position: fixed;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  border-radius: 16px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#root .button:hover {
+  background-color: #eee;
+}
+#root .button.with-label {
+  font-weight: 600;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#root .with-label :global(.fa) {
+  margin-right: 5px;
+}
+#root .button.icon:not(.with-label) {
+  width: 32px;
+}
+#root .button .circle {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+}
