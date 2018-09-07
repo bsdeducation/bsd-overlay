@@ -5,10 +5,12 @@ export function applyProps(w, props, propMap) {
     (a, b) => propOrder.indexOf(a) - propOrder.indexOf(b)
   );
   for (let prop of propsIter) {
-    if (propMap[prop] != null) {
-      propMap[prop](w, props[prop], props);
-    } else {
-      console.error(`Unsupported prop '${prop}'`);
+    if (props[prop]) {
+      if (propMap[prop] != null) {
+        propMap[prop](w, props[prop], props);
+      } else {
+        console.error(`Unsupported prop '${prop}'`);
+      }
     }
   }
 }

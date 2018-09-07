@@ -1,5 +1,4 @@
-import fa from 'fontawesome';
-import { applyProps, attachProps } from './props';
+import { applyProps } from './props';
 import { createWidget } from './widget';
 import styles from './style.css';
 
@@ -18,17 +17,13 @@ const supportedSizes = {
 };
 
 function icon(w, icon) {
-  if (fa[icon]) {
-    w.innerHTML += '<span class="fa">' + fa[icon] + '</span>';
-    w.className += ' ' + styles.icon;
-  } else {
-    console.error(`Unknown icon '${icon}'.`);
-  }
+  w.innerHTML += `<span class="fa fa-${icon}"></span>`;
+  w.classes.push(styles.icon);
 }
 
 function text(w, text) {
-  w.innerHTML += text;
-  w.className += ' ' + styles.withLabel;
+  w.innerHTML += `<span>${text}</span>`;
+  w.classes.push(styles.withLabel);
 }
 
 function position(w, position) {
@@ -36,12 +31,13 @@ function position(w, position) {
   for (let p in position) {
     s += `${p}: ${position[p]}; `;
   }
-  w.style = s || 'top: 0px;';
+  w.styles.push(s || 'top: 0px');
 }
 
 function style(w, style) {
   if (supportedStyles[style]) {
-    w.className += ' ' + styles.styled + ' ' + supportedStyles[style];
+    w.classes.push(styles.styled);
+    w.classes.push(supportedStyles[style]);
   } else {
     console.error(`Unknown style '${style}'.`);
   }
@@ -49,7 +45,7 @@ function style(w, style) {
 
 function size(w, size) {
   if (supportedSizes[size]) {
-    w.className += ' ' + supportedSizes[size];
+    w.classes.push(supportedSizes[size]);
   } else {
     console.error(`Unknown size '${size}'.`);
   }
@@ -60,64 +56,117 @@ function onClick(w, onClick) {
 }
 
 function layout(w, layout, props) {
-  if (layout === 'row') {
-    if (props && props.position && props.position.right) {
-      layout = 'row-reverse';
-    }
-  } else if (layout === 'column') {
-    if (props && props.position && props.position.bottom) {
-      layout = 'column-reverse';
-    }
+  if (layout === 'row' || layout === 'column') {
+    w.styles.push(`flex-direction: ${layout}`);
   } else {
     console.error(`Unknown layout '${layout}'.`);
-    return;
   }
-  w.style = `flex-direction: ${layout};`;
-  console.log('layout: ', layout);
+  
 }
 
 // -----------------------------------------------------------
-// Helpers
+// Widgets
 // -----------------------------------------------------------
 
-function addButtonToPanel(buttonProps, panel) {
-  const {icon, text, style} = buttonProps;
-  const b = button({icon, text, style});
-  console.log('b: ', b);
-  panel.appendChild(b.element);
-  return b;
+class Widget {
+  constructor(type, props, propMap) {
+    this.element = createWidget(type, props);
+    this.originalClassName = this.element.className;
+    this.props = props;
+    this.propMap = propMap;
+    this.applyProps(this.props);
+  }
+
+  applyProps(props) {
+    const proxy = {
+      innerHTML: '',
+      styles: [],
+      classes: [this.originalClassName],
+      events: [],
+      addEventListener: () => {}
+    };
+    applyProps(proxy, props, this.propMap);
+    this.element.innerHTML = proxy.innerHTML;
+    this.element.className = proxy.classes.join(' ');
+    this.element.style = proxy.styles.join(';');
+    for (let event of proxy.events) {
+      this.element.addEventListener(event.type, event.handler, event.useCapture);
+    }
+  }
+
+  updateProp(propName, value) {
+    Object.assign(this.props, {[propName]: value});
+    this.applyProps(this.props);
+  }
+};
+
+/**
+ * Creates a button widget with the specified properties.
+ * 
+ * @param {Object} props
+ * @return 
+ */
+class Button extends Widget {
+  constructor(props) {
+    super(
+      'button',
+      props,
+      { icon, text, position, style, size, onClick }
+    );
+  }
+
+  set icon(v) {
+    this.updateProp('icon', v);
+  }
+
+  set text(v) {
+    this.updateProp('text', v);
+  }
+
+  set position(v) {
+    this.updateProp('position', v);
+  }
+
+  set style(v) {
+    this.updateProp('style', v);
+  }
+
+  set size(v) {
+    this.updateProp('size', v);
+  }
+
+  set onClick(v) {
+    this.updateProp('onClick', v);
+  }
 }
 
-// -----------------------------------------------------------
-// Public widgets
-// -----------------------------------------------------------
+class Panel extends Widget {
+  constructor(props) {
+    super(
+      'panel',
+      props,
+      { layout, position }
+    );
+  }
 
-function button(props) {
-  const buttonProps = {
-    icon, text, position, style, size, onClick
-  };
+  set layout(v) {
+    this.updateProp('layout', v);
+  }
 
-  const w = createWidget('button', props);
-  applyProps(w, props, buttonProps);
+  set position(v) {
+    this.updateProp('position', v);
+  }
 
-  const b = Object.assign({element: w}, props);
-  return b;//attachProps(b, buttonProps);
-}
-
-function panel(props) {
-  const panelProps = {
-    position, layout
-  };
-  const w = createWidget('panel', props);
-  applyProps(w, props, panelProps);
-  return {
-    button: (buttonProps) => addButtonToPanel(buttonProps, w)
-  };
+  button(buttonProps) {
+    const b = new Button(buttonProps);
+    this.element.appendChild(b.element);
+    return b;
+  }
 }
 
 (function (win) {
   win.$BSD = {
-    button,
-    panel,
+    button: (props) => new Button(props),
+    panel: (props) => new Panel(props),
   };
 })(window)

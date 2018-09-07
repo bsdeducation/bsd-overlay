@@ -31,7 +31,11 @@ export default {
     }),
     postcss({
       extract: false,
-      plugins: [require('postcss-nested')],
+      plugins: [
+        require('postcss-nested'),
+        require('postcss-color-function'),
+        require('postcss-variables')
+      ],
       writeDefinitions: true,
     }),
     typescriptPlugin({

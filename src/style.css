@@ -1,70 +1,82 @@
+$hoverShade: 3%;
+
 /* overlay styles */
 #root {
   color: #111111;
   font-family: Avenir;
+  div {
+    position: fixed;
+  }
 }
-#root div {
-  position: fixed;
-}
+
 /* button widget */
-#root .button {
-  background-color: white;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  border-radius: 16px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#root .button:hover {
-  background-color: #eee;
-}
-#root .button.with-label {
-  font-weight: 600;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-#root .with-label :global(.fa) {
-  margin-right: 5px;
-}
-#root .button.icon:not(.with-label) {
-  width: 32px;
-}
-#root .button.icon.large {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-}
-#root .button.icon.large :global(.fa) {
-  font-size: 2em;
-}
-#root .button.styled {
-  color: white;
-}
-#root .button.styled.primary {
-  background-color: #4bb7f6;
-}
-#root .button.styled.success {
-  background-color: #4cb784;
-}
-#root .button.styled.danger {
-  background-color: #d36d6b;
+#root {
+  .button {
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border-radius: 16px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .button:hover {
+    background-color: color(white shade(10%));
+
+  }
+  .button.with-label {
+    font-weight: 600;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .with-label :global(.fa) {
+    margin-right: 8px;
+  }
+  .button.icon:not(.with-label) {
+    width: 32px;
+  }
+  .button.icon.large {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+  }
+  .button.icon.large :global(.fa) {
+    font-size: 2em;
+  }
+  .button.styled {
+    color: white;
+  }
+  .button.styled.primary {
+    background-color: #4bb7f6;
+    &:hover {
+      background-color: color(#4bb7f6 shade(10%))
+    }
+  }
+  .button.styled.success {
+    background-color: #4cb784;
+    &:hover {
+      background-color: color(#4cb784 shade(10%))
+    }
+  }
+  .button.styled.danger {
+    background-color: #d36d6b;
+    &:hover {
+      background-color: color(#d36d6b shade(10%))
+    }
+  }
 }
 
 /* panel widget */
-#root .panel {
-  display: flex;
+#root {
+  .panel {
+    display: flex;
+    align-items: center;
+    div {
+      margin: 5px;
+    }
+  }
+  .panel .button  {
+    position: static;
+  }
 }
-/* #root .panel.row {
-  flex-direction: row;
-}
-#root .panel.row-reverse {
-  flex-direction: row-reverse;
-}
-#root .panel.column {
-  flex-direction: column;
-}
-#root .panel.column-reverse {
-  flex-direction: column-reverse;
-} */

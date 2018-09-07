@@ -6,7 +6,7 @@ For example:
 ```javascript
 $BSD.overlay.button({
   position: { top: '20px', right: '20px' },
-  icon: 'left-arrow',
+  icon: 'arrow-left',
   onClick: () => console.log('clicked 1'),
 });
 ```
@@ -16,3 +16,7 @@ The goals of this library are:
 * ease of use - to speed up content creation
 * consistency - to provide a level of consistency across content
 * **not** flexibility - it's not supposed to be a general purpose toolkit
+
+## Icons
+
+This library uses [FontAwesome](https://fontawesome.com) for all icons.

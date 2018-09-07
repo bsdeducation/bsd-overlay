@@ -1,50 +1,42 @@
 $BSD.button({
-  position: { top: '20px', right: '200px' },
+  position: { top: '20px', right: '100px' },
   icon: 'ambulance',
   onClick: () => console.log('clicked 1'),
 });
 
 $BSD.button({
-  position: { right: '200px', top: '60px' },
+  position: { top: '60px', right: '100px' },
   text: 'HELLOOOOOOOO!!',
   icon: 'compress',
   onClick: () => console.log('clicked 2'),
 });
 $BSD.button({
-  position: { top: '100px', right: '200px' },
+  position: { top: '100px', right: '100px' },
   text: 'just text',
-  onClick: () => console.log('clicked 2'),
+  onClick: () => console.log('clicked 3'),
 });
 
-// let text = 'tick';
-// const clock = $BSD.button({
-//   position: { top: '20px', left: '30px' },
-//   text,
-// });
-// setInterval(() => {
-//   text = text === 'tick' ? 'tock' : 'tick';
-//   clock.text = text;
-// }, 1000);
+let msg = 'tick';
+const clock = $BSD.button({
+  position: { top: '20px', left: '30px' },
+  text: msg,
+});
+setInterval(() => {
+  msg = msg === 'tick' ? 'tock' : 'tick';
+  clock.text = msg;
+}, 1000);
 
-// $BSD.button({
-//   position: { bottom: '60px', right: '200px' },
-//   style: 'danger',
-//   icon: 'times',
-// });
-// $BSD.button({
-//   position: { bottom: '60px', right: '150px' },
-//   style: 'primary',
-//   icon: 'check',
-// });
-// $BSD.button({
-//   position: { bottom: '60px', right: '70px' },
-//   style: 'success',
-//   icon: 'refresh',
-//   size: 'large'
-// });
+const r = $BSD.panel({layout: 'row', position: { bottom: '60px', right: '60px' }});
+r.button( {icon: 'compress'} );
+r.button( {text: 'text button'} );
+r.button( {icon: 'minus'} );
+r.button( {icon: 'plus'} );
+r.button( {icon: 'chevron-left'} );
+r.button( {icon: 'chevron-right'} );
+r.button( {icon: 'chevron-up'} );
+r.button( {icon: 'chevron-down'} );
 
-const p = $BSD.panel({layout: 'row', position: { bottom: '60px', right: '60px' }});
-p.button( {style: 'danger', icon: 'times'} );
-p.button( {style: 'primary', icon: 'check'} );
-p.button( {style: 'success', icon: 'refresh', size: 'large'} );
-
+const c = $BSD.panel({layout: 'column', position: { left: '60px', top: '120px' }});
+c.button( {style: 'danger', icon: 'times'} );
+c.button( {style: 'primary', icon: 'check'} );
+c.button( {style: 'success', icon: 'sync', size: 'large'} );
