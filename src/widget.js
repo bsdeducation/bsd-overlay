@@ -35,8 +35,11 @@ export function createElement({element = 'div', className = null, id = null, inn
   return e;
 }
 
-export function createWidget(type, { id = null, element = 'div' }) {
-  const widget = createElement({element, id, className: styles[type]});
+export function createWidget(type, props = {}) {
+  const element = props.element || 'div';
+  const id = props.id;
+  const className = styles[type];
+  const widget = createElement({element, id, className});
   const root = getRoot();
   root.appendChild(widget);
   return widget;

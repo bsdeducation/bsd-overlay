@@ -5,19 +5,20 @@ export function applyProps(w, props, propMap) {
     (a, b) => propOrder.indexOf(a) - propOrder.indexOf(b)
   );
   for (let prop of propsIter) {
-    if (propMap[prop]) {
-      propMap[prop](w, props[prop]);
+    if (propMap[prop] != null) {
+      propMap[prop](w, props[prop], props);
     } else {
       console.error(`Unsupported prop '${prop}'`);
     }
   }
 }
 
-export function attachProps(w, propMap) {
+export function attachProps(obj, propMap) {
   for (let prop in propMap) {
-    Object.defineProperty(w, prop, {
+    Object.defineProperty(obj, prop, {
       key: prop,
-      set: (value) => propMap[prop](w, value)
+      set: (value) => propMap[prop](obj, value, {})
     });
   }
+  return obj;
 }
