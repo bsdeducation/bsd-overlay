@@ -1,46 +1,60 @@
 import fa from 'fontawesome';
+import { applyProps, attachProps } from './props';
 import { createWidget } from './widget';
 import styles from './style.css';
 
-const supportedStyles = ['primary', 'success', 'danger'];
+const supportedStyles = {
+  primary: styles.primary,
+  success: styles.success,
+  danger: styles.danger,
+};
+const supportedSizes = {
+  default: '',
+  large: styles.large
+};
 
-export function button(props) {
-  const { position, id, icon, style, text, size, tooltips, onClick } = props;
-
-  const w = createWidget('button', { id });
-
-  if (icon) {
+const buttonProps = {
+  icon: (w, icon) => {
     if (fa[icon]) {
       w.innerHTML += '<span class="fa">' + fa[icon] + '</span>';
       w.className += ' ' + styles.icon;
     } else {
       console.error(`Unknown icon '${icon}'.`);
     }
-  }
-  if (text) {
+  },
+  text: (w, text) => {
     w.innerHTML += text;
     w.className += ' ' + styles.withLabel;
-  }
-  if (position) {
+  },
+  position: (w, position) => {
     let s = '';
     for (let p in position) {
       s += `${p}: ${position[p]};`;
     }
-    //  top: ${position.top}; right: 30px;'
     w.style = s;
-  }
-  if (style && supportedStyles.indexOf(style) >= 0) {
-    w.className += ' ' + styles.styled + ' ' + styles[style];
-  }
-  if (onClick) {
+  },
+  style: (w, style) => {
+    if (supportedStyles[style]) {
+      w.className += ' ' + styles.styled + ' ' + supportedStyles[style];
+    } else {
+      console.error(`Unknown style '${style}'.`);
+    }
+  },
+  size: (w, size) => {
+    if (supportedSizes[size]) {
+      w.className += ' ' + supportedSizes[size];
+    } else {
+      console.error(`Unknown size '${size}'.`);
+    }
+  },
+  onClick: (w, onClick) => {
     w.addEventListener('click', onClick, false);
   }
+}
 
-  function applyProps(props) {
-
-  }
-
-  return w;
-  // return {
-  // };
+export function button(props) {
+  const { id } = props;
+  const w = createWidget('button', { id });
+  applyProps(w, props, buttonProps);
+  return attachProps(props, buttonProps);
 }

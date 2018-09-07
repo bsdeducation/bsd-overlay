@@ -28,7 +28,8 @@ $BSD.button({
   icon: 'check',
 });
 $BSD.button({
-  position: { bottom: '60px', right: '100px' },
+  position: { bottom: '60px', right: '70px' },
   style: 'success',
   icon: 'refresh',
+  size: 'large'
 });

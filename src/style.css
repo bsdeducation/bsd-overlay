@@ -30,10 +30,13 @@
 #root .button.icon:not(.with-label) {
   width: 32px;
 }
-#root .button .circle {
-  height: 48px;
-  width: 48px;
+#root .button.icon.large {
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
+}
+#root .button.icon.large :global(.fa) {
+  font-size: 2em;
 }
 #root .button.styled {
   color: white;
