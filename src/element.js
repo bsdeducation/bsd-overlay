@@ -1,7 +1,5 @@
 import styles from './style.css'
 
-const OVERLAY_ROOT_ID = 'overlay_root';
-const OVERLAY_CLASS_PREFIX = 'overlay overlay-';
 let root;
 
 function getRoot() {
@@ -32,15 +30,13 @@ export function createElement({element = 'div', className = null, id = null, inn
   if (innerHTML) {
     e.innerHTML = innerHTML;
   }
+  const root = getRoot();
+  root.appendChild(e);
   return e;
 }
 
-export function createWidget(type, props = {}) {
-  const element = props.element || 'div';
-  const id = props.id;
-  const className = styles[type];
-  const widget = createElement({element, id, className});
+
+export function deleteElement(element) {
   const root = getRoot();
-  root.appendChild(widget);
-  return widget;
+  root.removeChild(element);
 }

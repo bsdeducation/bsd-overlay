@@ -40,3 +40,14 @@ const c = $BSD.panel({layout: 'column', position: { left: '60px', top: '120px' }
 c.button( {style: 'danger', icon: 'times'} );
 c.button( {style: 'primary', icon: 'check'} );
 c.button( {style: 'success', icon: 'sync', size: 'large'} );
+
+let counter = 2;
+const countDown = c.button();
+setInterval(() => {
+  if (counter >= 0) {
+    countDown.text = `${counter}`;
+    counter--;
+  } else {
+    countDown.delete();
+  }
+}, 1000);

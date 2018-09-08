@@ -1,5 +1,5 @@
 import { applyProps } from './props';
-import { createWidget } from './widget';
+import { createElement, deleteElement } from './element';
 import styles from './style.css';
 
 // -----------------------------------------------------------
@@ -55,7 +55,7 @@ function onClick(w, onClick) {
   w.addEventListener('click', onClick, false);
 }
 
-function layout(w, layout, props) {
+function layout(w, layout) {
   if (layout === 'row' || layout === 'column') {
     w.styles.push(`flex-direction: ${layout}`);
   } else {
@@ -70,14 +70,20 @@ function layout(w, layout, props) {
 
 class Widget {
   constructor(type, props, propMap) {
-    this.element = createWidget(type, props);
+    this.props = props || {};
+    const id = this.props.id;
+    const className = styles[type];
+    this.element = createElement({element: 'div', id, className});
     this.originalClassName = this.element.className;
-    this.props = props;
     this.propMap = propMap;
     this.applyProps(this.props);
   }
 
   applyProps(props) {
+    if (!this.element) {
+      return;
+    }
+
     const proxy = {
       innerHTML: '',
       styles: [],
@@ -97,6 +103,23 @@ class Widget {
   updateProp(propName, value) {
     Object.assign(this.props, {[propName]: value});
     this.applyProps(this.props);
+  }
+
+  addChild(w) {
+    w.parent = this;
+    this.element.appendChild(w.element);
+  }
+
+  delete() {
+    if (this.element) {
+      if (this.parent) {
+        this.parent.element.removeChild(this.element);
+        this.parent = null;
+      } else {
+        deleteElement(this.element);
+      }
+      this.element = null;
+    }
   }
 };
 
@@ -159,7 +182,7 @@ class Panel extends Widget {
 
   button(buttonProps) {
     const b = new Button(buttonProps);
-    this.element.appendChild(b.element);
+    this.addChild(b);
     return b;
   }
 }
