@@ -18,6 +18,7 @@ function _applyProps(element, props, propMap) {
 export function applyProps(element, props, propMap, originalClasses) {
   const events = [];
   const proxy = {
+    id: null,
     innerHTML: '',
     styles: [],
     classes: originalClasses,
@@ -27,9 +28,12 @@ export function applyProps(element, props, propMap, originalClasses) {
     }
   };
   _applyProps(proxy, props, propMap);
-  element.innerHTML = proxy.innerHTML;
-  element.className = proxy.classes.join(' ');
-  element.style = proxy.styles.join(';');
+  if (proxy.id) element.id = proxy.id;
+  if (proxy.innerHTML) element.innerHTML = proxy.innerHTML;
+  if (proxy.classes) element.className = proxy.classes.join(' ');
+  if (proxy.styles) element.style = proxy.styles.join(';');
+
+  // TODO: remove the previous events, or figure out diffs
   for (let event of proxy.events) {
     element.addEventListener(event.type, event.handler, event.useCapture);
   }

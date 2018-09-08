@@ -16,48 +16,52 @@ const supportedSizes = {
   large: styles.large
 };
 
-function icon(w, icon) {
-  w.innerHTML += `<span class="fa fa-${icon}"></span>`;
-  w.classes.push(styles.icon);
+function icon(element, icon) {
+  element.innerHTML += `<span class="fa fa-${icon}"></span>`;
+  element.classes.push(styles.icon);
 }
 
-function text(w, text) {
-  w.innerHTML += `<span>${text}</span>`;
-  w.classes.push(styles.withLabel);
+function id(element, id) {
+  element.id = id;
 }
 
-function position(w, position) {
+function text(element, text) {
+  element.innerHTML += `<span>${text}</span>`;
+  element.classes.push(styles.withLabel);
+}
+
+function position(element, position) {
   let s = '';
   for (let p in position) {
     s += `${p}: ${position[p]}; `;
   }
-  w.styles.push(s || 'top: 0px');
+  element.styles.push(s || 'top: 0px');
 }
 
-function style(w, style) {
+function style(element, style) {
   if (supportedStyles[style]) {
-    w.classes.push(styles.styled);
-    w.classes.push(supportedStyles[style]);
+    element.classes.push(styles.styled);
+    element.classes.push(supportedStyles[style]);
   } else {
     console.error(`Unknown style '${style}'.`);
   }
 }
 
-function size(w, size) {
+function size(element, size) {
   if (supportedSizes[size]) {
-    w.classes.push(supportedSizes[size]);
+    element.classes.push(supportedSizes[size]);
   } else {
     console.error(`Unknown size '${size}'.`);
   }
 }
 
-function onClick(w, onClick) {
-  w.addEventListener('click', onClick, false);
+function onClick(element, onClick) {
+  element.addEventListener('click', onClick, false);
 }
 
-function layout(w, layout) {
+function layout(element, layout) {
   if (layout === 'row' || layout === 'column') {
-    w.styles.push(`flex-direction: ${layout}`);
+    element.styles.push(`flex-direction: ${layout}`);
   } else {
     console.error(`Unknown layout '${layout}'.`);
   }
@@ -119,12 +123,16 @@ class Button extends Widget {
     super(
       'button',
       props,
-      { icon, text, position, style, size, onClick }
+      { icon, id, text, position, style, size, onClick }
     );
   }
 
   set icon(v) {
     this.updateProp('icon', v);
+  }
+
+  set id(v) {
+    this.updateProp('id', v);
   }
 
   set text(v) {
