@@ -4,8 +4,13 @@ $hoverShade: 3%;
 #root {
   color: #111111;
   font-family: Avenir;
+  visibility: hidden;
   div {
     position: fixed;
+    animation: fadein 2s;
+  }
+  &.loaded {
+    visibility: visible;
   }
 }
 
@@ -79,4 +84,9 @@ $hoverShade: 3%;
   .panel .button  {
     position: static;
   }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

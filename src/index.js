@@ -61,7 +61,6 @@ function layout(w, layout) {
   } else {
     console.error(`Unknown layout '${layout}'.`);
   }
-  
 }
 
 // -----------------------------------------------------------
@@ -83,21 +82,7 @@ class Widget {
     if (!this.element) {
       return;
     }
-
-    const proxy = {
-      innerHTML: '',
-      styles: [],
-      classes: [this.originalClassName],
-      events: [],
-      addEventListener: () => {}
-    };
-    applyProps(proxy, props, this.propMap);
-    this.element.innerHTML = proxy.innerHTML;
-    this.element.className = proxy.classes.join(' ');
-    this.element.style = proxy.styles.join(';');
-    for (let event of proxy.events) {
-      this.element.addEventListener(event.type, event.handler, event.useCapture);
-    }
+    applyProps(this.element, props, this.propMap, [this.originalClassName]);
   }
 
   updateProp(propName, value) {

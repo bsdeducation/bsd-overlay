@@ -1,20 +1,28 @@
 import styles from './style.css'
 
-let root;
+// Begin loading the FontAwesome stylesheet immediately.
+const css = document.createElement('link');
+css.href = 'https://use.fontawesome.com/releases/v5.3.1/css/all.css';
+css.rel = 'stylesheet';
+css.type = 'text/css';
+document.getElementsByTagName('head')[0].appendChild(css);
 
+document.fonts.onloadingdone = (fontFaceSetEvent) => {
+  for (let f of fontFaceSetEvent.fontfaces) {
+    if (f.family.indexOf('Font Awesome') >= 0) {
+      const root = getRoot();
+      root.className = styles.loaded;
+    }
+  }
+};
+
+let root;
 function getRoot() {
   if (!root) {
     root = document.createElement('div');
     root.id = styles.root;
     const body = document.getElementsByTagName('body')[0];
     body.appendChild(root);
-
-    const css = document.createElement('link');
-		css.href = 'https://use.fontawesome.com/releases/v5.3.1/css/all.css';
-    css.rel = 'stylesheet';
-    css.type = 'text/css';
-    css.crossorigin = 'anonymous';
-		document.getElementsByTagName('head')[0].appendChild(css);
   }
   return root;
 }
