@@ -20,13 +20,17 @@ let msg = 'tick';
 const clock = $BSD.button({
   position: { top: '20px', left: '30px' },
   text: msg,
+  onClick: () => {
+    msg = msg === 'tick' ? 'tock' : 'tick';
+    clock.text = msg;
+  }
 });
-setInterval(() => {
-  msg = msg === 'tick' ? 'tock' : 'tick';
-  clock.text = msg;
-}, 1000);
+// setInterval(() => {
+//   msg = msg === 'tick' ? 'tock' : 'tick';
+//   clock.text = msg;
+// }, 1000);
 
-const r = $BSD.panel({layout: 'row', position: { bottom: '60px', right: '60px' }});
+const r = $BSD.container({layout: 'row', position: { bottom: '60px', right: '60px' }});
 r.button( {icon: 'compress'} );
 r.button( {text: 'text button'} );
 r.button( {icon: 'minus'} );
@@ -36,7 +40,7 @@ r.button( {icon: 'chevron-right'} );
 r.button( {icon: 'chevron-up'} );
 r.button( {icon: 'chevron-down'} );
 
-const c = $BSD.panel({layout: 'column', position: { left: '60px', top: '120px' }});
+const c = $BSD.container({layout: 'column', position: { left: '60px', top: '120px' }});
 c.button( {id: 'xyz', style: 'danger', icon: 'times'} );
 c.button( {style: 'primary', icon: 'check'} );
 c.button( {style: 'success', icon: 'sync', size: 'large'} );

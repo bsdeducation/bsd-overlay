@@ -6,13 +6,15 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w",
-    "example": "open ./example/index.html"
+    "example": "open ./example/index.html",
+    "doc": "jsdoc -c jsdoc.conf.json -d docs -u src --readme README.md",
+    "doc:open": "open ./docs/index.html"
   },
-  "dependencies": {
-    "documentjs": "0.5.4"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@markvl/jsdoc-template": "3.2.0",
     "concurrently": "4.0.1",
+    "jsdoc": "3.5.5",
     "postcss-color-function": "4.0.1",
     "postcss-nested": "3.0.0",
     "postcss-variables": "1.1.1",

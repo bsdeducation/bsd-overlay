@@ -1,50 +1,63 @@
-function _applyProps(element, props, propMap) {
-  // Put the props in the order defined in propMap, not the order in the props object.
-  const propOrder = Object.keys(propMap);
-  const propsIter = Object.keys(props).sort(
-    (a, b) => propOrder.indexOf(a) - propOrder.indexOf(b)
-  );
-  for (let prop of propsIter) {
-    if (props[prop]) {
-      if (propMap[prop] != null) {
-        propMap[prop](element, props[prop]);
-      } else {
-        console.error(`Unsupported prop '${prop}'`);
-      }
-    }
+import styles from './style.css';
+
+const supportedStyles = {
+  primary: styles.primary,
+  success: styles.success,
+  danger: styles.danger,
+  default: '',
+};
+const supportedSizes = {
+  default: '',
+  large: styles.large
+};
+
+export function icon(element, icon) {
+  element.innerHTML += `<span class="fa fa-${icon}"></span>`;
+  element.classes.push(styles.icon);
+}
+
+export function id(element, id) {
+  element.id = id;
+}
+
+export function text(element, text) {
+  element.innerHTML += `<span>${text}</span>`;
+  element.classes.push(styles.withLabel);
+}
+
+export function position(element, position) {
+  let s = '';
+  for (let p in position) {
+    s += `${p}: ${position[p]}; `;
+  }
+  element.styles.push(s || 'top: 0px');
+}
+
+export function style(element, style) {
+  if (supportedStyles[style]) {
+    element.classes.push(styles.styled);
+    element.classes.push(supportedStyles[style]);
+  } else {
+    console.error(`Unknown style '${style}'.`);
   }
 }
 
-export function applyProps(element, props, propMap, originalClasses) {
-  const events = [];
-  const proxy = {
-    id: null,
-    innerHTML: '',
-    styles: [],
-    classes: originalClasses,
-    events,
-    addEventListener: (type, handler, useCapture) => {
-      events.push({type, handler, useCapture});
-    }
-  };
-  _applyProps(proxy, props, propMap);
-  if (proxy.id) element.id = proxy.id;
-  if (proxy.innerHTML) element.innerHTML = proxy.innerHTML;
-  if (proxy.classes) element.className = proxy.classes.join(' ');
-  if (proxy.styles) element.style = proxy.styles.join(';');
-
-  // TODO: remove the previous events, or figure out diffs
-  for (let event of proxy.events) {
-    element.addEventListener(event.type, event.handler, event.useCapture);
+export function size(element, size) {
+  if (supportedSizes[size]) {
+    element.classes.push(supportedSizes[size]);
+  } else {
+    console.error(`Unknown size '${size}'.`);
   }
 }
 
-export function attachProps(obj, propMap) {
-  for (let prop in propMap) {
-    Object.defineProperty(obj, prop, {
-      key: prop,
-      set: (value) => propMap[prop](obj, value)
-    });
+export function onClick(element, onClick) {
+  element.addEventListener('click', onClick, false);
+}
+
+export function layout(element, layout) {
+  if (layout === 'row' || layout === 'column') {
+    element.styles.push(`flex-direction: ${layout}`);
+  } else {
+    console.error(`Unknown layout '${layout}'.`);
   }
-  return obj;
 }

@@ -1,123 +1,7 @@
-import { applyProps } from './props';
-import { createElement, deleteElement } from './element';
-import styles from './style.css';
+import {icon, id, text, position, style, size, onClick, layout} from './props';
+import Widget from './Widget';
 
-// -----------------------------------------------------------
-// Prop handlers
-// -----------------------------------------------------------
 
-const supportedStyles = {
-  primary: styles.primary,
-  success: styles.success,
-  danger: styles.danger,
-};
-const supportedSizes = {
-  default: '',
-  large: styles.large
-};
-
-function icon(element, icon) {
-  element.innerHTML += `<span class="fa fa-${icon}"></span>`;
-  element.classes.push(styles.icon);
-}
-
-function id(element, id) {
-  element.id = id;
-}
-
-function text(element, text) {
-  element.innerHTML += `<span>${text}</span>`;
-  element.classes.push(styles.withLabel);
-}
-
-function position(element, position) {
-  let s = '';
-  for (let p in position) {
-    s += `${p}: ${position[p]}; `;
-  }
-  element.styles.push(s || 'top: 0px');
-}
-
-function style(element, style) {
-  if (supportedStyles[style]) {
-    element.classes.push(styles.styled);
-    element.classes.push(supportedStyles[style]);
-  } else {
-    console.error(`Unknown style '${style}'.`);
-  }
-}
-
-function size(element, size) {
-  if (supportedSizes[size]) {
-    element.classes.push(supportedSizes[size]);
-  } else {
-    console.error(`Unknown size '${size}'.`);
-  }
-}
-
-function onClick(element, onClick) {
-  element.addEventListener('click', onClick, false);
-}
-
-function layout(element, layout) {
-  if (layout === 'row' || layout === 'column') {
-    element.styles.push(`flex-direction: ${layout}`);
-  } else {
-    console.error(`Unknown layout '${layout}'.`);
-  }
-}
-
-// -----------------------------------------------------------
-// Widgets
-// -----------------------------------------------------------
-
-class Widget {
-  constructor(type, props, propMap) {
-    this.props = props || {};
-    const id = this.props.id;
-    const className = styles[type];
-    this.element = createElement({element: 'div', id, className});
-    this.originalClassName = this.element.className;
-    this.propMap = propMap;
-    this.applyProps(this.props);
-  }
-
-  applyProps(props) {
-    if (!this.element) {
-      return;
-    }
-    applyProps(this.element, props, this.propMap, [this.originalClassName]);
-  }
-
-  updateProp(propName, value) {
-    Object.assign(this.props, {[propName]: value});
-    this.applyProps(this.props);
-  }
-
-  addChild(w) {
-    w.parent = this;
-    this.element.appendChild(w.element);
-  }
-
-  delete() {
-    if (this.element) {
-      if (this.parent) {
-        this.parent.element.removeChild(this.element);
-        this.parent = null;
-      } else {
-        deleteElement(this.element);
-      }
-      this.element = null;
-    }
-  }
-};
-
-/**
- * Creates a button widget with the specified properties.
- * 
- * @param {Object} props
- * @return 
- */
 class Button extends Widget {
   constructor(props) {
     super(
@@ -156,10 +40,35 @@ class Button extends Widget {
   }
 }
 
-class Panel extends Widget {
+/**
+ * Creates a button widget with the specified properties.
+ * 
+ * @param {Object} props
+ * @param {string} props.position - The position of the button. The position is always 'fixed' in CSS, but this parameter allows you to specify offsets from `left`, `right`, `top` and `bottom`.
+ * @param {string} props.onClick - The callback to be invoked when the button is clicked. The button instance is passed as a parameter to the callback.
+ * @param {string=} props.icon - The name of any FontAwesome icon. Defaults to no icon.
+ * @param {string=} props.text - The text to be shown on the button. Defaults to no text. If there is no text then the button will be circular.
+ * @param {string=} props.style - The style of the button: 'primary', 'success', 'danger' or 'default'.
+ * This affects the button colour.
+ * @param {string=} props.size - The size of the button: 'default' or 'large'.
+ * @param {string=} props.id - This allows you to specify the CSS `id` of the button, but this shouldn't ordinarily be required.
+ * 
+ * @example
+ * $BSD.overlay.button({
+ *   position: { top: '20px', right: '20px' },
+ *   icon: 'arrow-left',
+ *   onClick: () => console.log('clicked 1'),
+ * });
+ */
+function button(props) {
+  return new Button(props);
+}
+
+
+class Container extends Widget {
   constructor(props) {
     super(
-      'panel',
+      'layout',
       props,
       { layout, position }
     );
@@ -180,9 +89,20 @@ class Panel extends Widget {
   }
 }
 
+/**
+ * Creates a container widget with the specified properties.
+ * 
+ * @param {Object} props
+ * @param {string} props.position - The position of the container. The position is always 'fixed' in CSS, but this parameter allows you to specify offsets from `left`, `right`, `top` and `bottom`.
+ * @param {string} props.direction - The direction of the container: 'row' or 'column'.
+ */
+function container(props) {
+  return new Container(props);
+}
+
 (function (win) {
   win.$BSD = {
-    button: (props) => new Button(props),
-    panel: (props) => new Panel(props),
+    button,
+    container,
   };
 })(window)
