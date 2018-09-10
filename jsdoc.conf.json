@@ -10,13 +10,19 @@
       "closure"
     ]
   },
+  "plugins": [
+    "plugins/markdown"
+  ],
   "templates": {
-    "referenceTitle": "BSD Overlay JS API",
+    "referenceTitle": "BSD Overlay JavaScript API",
     "disableSort": false,
     "cleverLinks": false,
     "monospaceLinks": false,
     "default": {
-      "includeDate": false
+      "includeDate": false,
+      "staticFiles": {
+        "include": ["images"]
+      }
     }
   },
   "opts": {

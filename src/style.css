@@ -5,8 +5,10 @@ $hoverShade: 3%;
   color: #111111;
   font-family: Avenir;
   visibility: hidden;
-  div {
+  >div {
     position: fixed;
+  }
+  div {
     animation: fadein 2s;
   }
   &.loaded {
@@ -74,7 +76,7 @@ $hoverShade: 3%;
 
 /* panel widget */
 #root {
-  .panel {
+  .container {
     display: flex;
     align-items: center;
     div {

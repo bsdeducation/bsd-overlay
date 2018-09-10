@@ -1,7 +1,6 @@
 import {icon, id, text, position, style, size, onClick, layout} from './props';
 import Widget from './Widget';
 
-
 class Button extends Widget {
   constructor(props) {
     super(
@@ -65,23 +64,36 @@ function button(props) {
 }
 
 
-class Container extends Widget {
+/**
+ * This is a container widget which is used for creating and positioning multiple child widgets.
+ */
+ class Container extends Widget {
   constructor(props) {
     super(
-      'layout',
+      'container',
       props,
       { layout, position }
     );
   }
 
+  /**
+   * Change the layout property of the container.
+   */
   set layout(v) {
     this.updateProp('layout', v);
   }
 
+  /**
+   * Change the position property of the container.
+   */
   set position(v) {
     this.updateProp('position', v);
   }
 
+  /**
+   * Constructs a {@link Button} component
+   * @param {*} buttonProps 
+   */
   button(buttonProps) {
     const b = new Button(buttonProps);
     this.addChild(b);
@@ -94,14 +106,18 @@ class Container extends Widget {
  * 
  * @param {Object} props
  * @param {string} props.position - The position of the container. The position is always 'fixed' in CSS, but this parameter allows you to specify offsets from `left`, `right`, `top` and `bottom`.
- * @param {string} props.direction - The direction of the container: 'row' or 'column'.
+ * @param {string} props.layout - The layout of the container: 'row' or 'column'.
+ * @returns an instance of a {@link Container} 
  */
 function container(props) {
   return new Container(props);
 }
 
 (function (win) {
-  win.$BSD = {
+  if (!win.$BSD) {
+    win.$BSD = {};
+  }
+  win.$BSD.overlay = {
     button,
     container,
   };

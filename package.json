@@ -1,5 +1,5 @@
 {
-  "name": "lbui",
+  "name": "@bsd/overlay",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -8,7 +8,10 @@
     "watch": "rollup -c -w",
     "example": "open ./example/index.html",
     "doc": "jsdoc -c jsdoc.conf.json -d docs -u src --readme README.md",
-    "doc:open": "open ./docs/index.html"
+    "doc:open": "open ./docs/index.html",
+    "postinstall": "cd host && yarn",
+    "host": "./host/start.sh",
+    "dev": "concurrently \"yarn run watch\" \"yarn run host\""
   },
   "dependencies": {},
   "devDependencies": {
