@@ -1,7 +1,7 @@
 import overlay from './overlay';
 
 // For BSD Online:
-if ($BSD) {
+if (typeof $BSD !== 'undefined') {
   $BSD.overlay = overlay;
 }
 

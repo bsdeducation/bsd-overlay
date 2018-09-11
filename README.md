@@ -33,4 +33,4 @@ All controls have a `delete()` function which will immediately remove the contro
 
 ## More documentation
 
-Please visit [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.5/docs/index.html) for the full documentation.
+Please visit [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.6/docs/index.html) for the full documentation.
