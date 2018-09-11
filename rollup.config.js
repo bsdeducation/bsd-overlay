@@ -1,6 +1,6 @@
+import babel from 'rollup-plugin-babel';
 import postcss from 'rollup-plugin-postcss-modules';
-import typescript from 'typescript';
-import typescriptPlugin from 'rollup-plugin-typescript2';
+import {uglify} from "rollup-plugin-uglify";
 
 export default {
   input: 'src/index.js',
@@ -19,9 +19,7 @@ export default {
       ],
       writeDefinitions: true,
     }),
-    typescriptPlugin({
-      typescript,
-      importHelpers: true,
-    }),
+    babel(),
+    uglify()
   ]
 }

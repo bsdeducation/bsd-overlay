@@ -56,4 +56,4 @@ Remember, this is not a general purpose UI component toolkit like bootstrap. It'
 
 In order to publish to BSD Online, you'll need the [AWS command line tools](https://docs.aws.amazon.com/cli/latest/userguide/installing.html). Once installed, run `aws configure` and enter the user id and secret access key. Ask Neil or Ding.
 
-After that, you can easily publish this module to BSD Online with `yarn publish`. You will be asked to enter a new version number. Once the publishing process is complete, the new version and the docs will be available within BSD Online's resources, [for example](https://app.bsd.education/resources/modules/bsd-overlay/0.1.1/docs/index.html).
+After that, you can easily publish this module to BSD Online with `yarn publish`. You will be asked to enter a new version number. Once the publishing process is complete, the new version and the docs will be available within BSD Online's resources, for example [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.1/docs/index.html).

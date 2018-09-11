@@ -18,20 +18,11 @@ The goals of this library are:
 * consistency - to provide a level of consistency across content
 * **not** flexibility - it's not supposed to be a general purpose toolkit
 
-This library is supposed to make it easier to define UI controls as an overlay above the primary content of the interactive step. The overlay controls are not supposed to be the primary content so they are not intended to be 
+This library is supposed to make it easier to define UI controls as an overlay above the primary content of the interactive step. The overlay controls are not supposed to be the primary content so they should not be highly configurable, attempting to solve all possible use cases.
 
-The design for the UI controls currently includes plans for:
-* buttons `[DONE]`
-* a platform-linked refresh button
-* container to assist with layout `[DONE]`
-* slider
-* progress bar
-* timers
-* meters
-* forms including text fields and combo boxes
-* modal dialogs
-* multi-page overlay 
-* success page
+The currently supported widgets are:
+* {@link button} - with a text label and/or icon
+* {@link container} - to simplify layout and positioning of other widgets
 
 Check out an example [here](../example/index.html).
 
@@ -60,7 +51,16 @@ Content creators are welcome (and encouraged!) to extend this library to support
 
 ## Design
 
-Here are some designs for possible extensions to this module:
+The design for the UI controls also includes plans for:
+* a platform-linked refresh button
+* slider
+* progress bar
+* timers
+* meters
+* forms including text fields and combo boxes
+* modal dialogs
+* multi-page overlay 
+* success page
 
 ![](design_1.png)
 ![](design_2.png)
