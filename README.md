@@ -54,16 +54,7 @@ This library has no other run-time dependencies.
 
 ## Development
 
-Content creators are welcome (and encouraged!) to extend this library to support additional controls. Please fork/clone the repo, develop your changes and make a pull request. 
-
-You can test out your own changes on BSD Online by using `yarn run dev`. This runs `yarn run watch` (which uses rollup in watch mode to automatically rebuild the library) and `yarn run host` which exposes your local `dist` directory to the world. Look in the console output for something like 
-```HTML
-<script type="text/javascript" src="https://bsd-overlay-myname.serveo.net/dist/index.js">
-</script>
-```
-and paste that into the HTML file for the interactive step you're working on. This will let you test out your local changes on BSD Online without having to publish anything, or risk breaking any existing content.
-
-When you have finished making changes to BSD.overlay, make a pull request. The repository owner will be responsible for merging PRs, publishing to npm and deploying the new release to BSD Online. This can be independent of the development team's release process.
+Content creators are welcome (and encouraged!) to extend this library to support additional controls. Please check out the {@tutorial development}.
 
 ## Design
 

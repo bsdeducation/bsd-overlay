@@ -3,3 +3,4 @@ node_modules
 dist
 src/*.d.ts
 docs
+yarn-error.log

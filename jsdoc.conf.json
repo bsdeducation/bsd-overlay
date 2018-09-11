@@ -30,6 +30,7 @@
     "encoding": "utf8",
     "private": true,
     "recurse": true,
-    "template": "./node_modules/@markvl/jsdoc-template"
+    "template": "../jsdoc-template-bsdeducation",
+    "Xtemplate": "./node_modules/@markvl/jsdoc-template"
   }
 }

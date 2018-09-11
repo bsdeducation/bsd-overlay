@@ -3,7 +3,9 @@
 BUCKET=bsd-launchbox-learner-production
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-VERSION=1.0.0
+VERSION=$npm_package_version
+echo "Publishing version $VERSION to S3..."
+
 DIST_DIR=$DIR/../dist/
 rm -rf $DIST_DIR/$VERSION
 mkdir $DIST_DIR/$VERSION

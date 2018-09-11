@@ -1,8 +1,6 @@
 import {icon, id, text, position, style, size, onClick, layout} from './props';
 import Widget from './Widget';
 
-// (function () {
-
 class Button extends Widget {
   constructor(props) {
     super(
