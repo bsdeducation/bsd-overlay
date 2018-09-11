@@ -1,6 +1,6 @@
 ## Overview
 
-In order to contribute to the BSD.overlay module you'll need a GitHub account. At a high level, the process for contributing to this module is:
+In order to contribute to the BSD Overlay module you'll need a GitHub account. At a high level, the process for contributing to this module is:
 1. Fork the repository in GitHub.
 1. Make your changes on a local version of the module.
 1. Test your changes on BSD Online using the `yarn run dev` command. See below.
@@ -19,7 +19,7 @@ You'll need these tools installed on your machine:
 
 After forking the repository, clone it to your machine: `git clone <github URL to your repo>`
 
-Within your 'BSD.online' directory run `yarn` to install all dependencies.
+Within your 'bsd-overlay' directory run `yarn` to install all dependencies.
 
 ---
 > The main scripts in package.json to be aware of are:
@@ -56,7 +56,7 @@ Remember, this is not a general purpose UI component toolkit like bootstrap. It'
 
 In order to publish to BSD Online, you'll need the [AWS command line tools](https://docs.aws.amazon.com/cli/latest/userguide/installing.html). Once installed, run `aws configure` and enter the user id and secret access key. Ask Neil or Ding.
 
-After that, you can easily publish this module to BSD Online with `yarn publish`. You will be asked to enter a new version number. Once the publishing process is complete, the new version and the docs will be available within BSD Online's resources, for example [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.6/docs/index.html).
+After that, you can easily publish this module to BSD Online with `yarn publish`. You will be asked to enter a new version number. Once the publishing process is complete, the new version and the docs will be available within BSD Online's resources, for example [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.7/docs/index.html).
 
 ## To-do
 

@@ -29,8 +29,6 @@ const b = $BSD.overlay.button({
 });
 ```
 
-All controls have a `delete()` function which will immediately remove the control from the DOM. If the control is a container which was used for creating other controls then all the child controls will also be removed.
-
 ## More documentation
 
-Please visit [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.6/docs/index.html) for the full documentation.
+Please visit [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.7/docs/index.html) for the full documentation.
