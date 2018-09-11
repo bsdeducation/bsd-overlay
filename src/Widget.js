@@ -43,7 +43,10 @@ export function applyProps(element, props, propMap, originalClasses) {
 }
 
 
-export default class Widget {
+/**
+ * The base widget class for all widgets in this library.
+ */
+class Widget {
   constructor(type, props, propMap) {
     this.props = props || {};
     const id = this.props.id;
@@ -71,6 +74,9 @@ export default class Widget {
     this.element.appendChild(w.element);
   }
 
+  /**
+   * Delete the widget and any child widgets.
+   */
   delete() {
     if (this.element) {
       if (this.parent) {
@@ -83,3 +89,5 @@ export default class Widget {
     }
   }
 };
+
+export default Widget;

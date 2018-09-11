@@ -1,4 +1,10 @@
-$hoverShade: 3%;
+#forceFontLoad {
+  opacity: 0;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  pointer-events: none;
+}
 
 /* overlay styles */
 #root {
@@ -9,7 +15,7 @@ $hoverShade: 3%;
     position: fixed;
   }
   div {
-    animation: fadein 2s;
+    animation: fadein 1s;
   }
   &.loaded {
     visibility: visible;

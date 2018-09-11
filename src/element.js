@@ -7,34 +7,51 @@ css.rel = 'stylesheet';
 css.type = 'text/css';
 document.getElementsByTagName('head')[0].appendChild(css);
 
-let loadedFont = false;
+let loadingCompleted = false;
 document.fonts.onloadingdone = (fontFaceSetEvent) => {
   for (let f of fontFaceSetEvent.fontfaces) {
     if (f.family.indexOf('Font Awesome') >= 0) {
-      const root = getRoot();
-      root.className = styles.loaded;
-      loadedFont = true;
+      loadComplete();
     }
   }
 };
 setTimeout(
   () => {
-    if (!loadedFont) {
-      root.className = styles.loaded;
-      loadedFont = true;
-      console.error('bsd.overlay - Failed to load FontAwesome');
+    if (!loadingCompleted) {
+      console.error('bsd.overlay - Failed to load font');
     }
+    loadComplete();
   },
   3000
 );
+
+function loadComplete() {
+  if (!loadingCompleted) {
+    const root = getRoot();
+    root.className = styles.loaded;
+    
+    const body = document.getElementsByTagName('body')[0];
+    body.appendChild(root); 
+
+    loadingCompleted = true;
+  }
+}
 
 let root;
 function getRoot() {
   if (!root) {
     root = document.createElement('div');
     root.id = styles.root;
+
+    // This is a dummy element that uses FontAwesome to prompt the browser to start loading it.
+    const forceFontLoad = document.createElement('span');
+    forceFontLoad.className = 'fa fa-arrow-left';
+    forceFontLoad.id = styles.forceFontLoad;
+
+    // The dummy element must be added directly to the body because we delay adding 'root' to
+    // the body until loading is complete.
     const body = document.getElementsByTagName('body')[0];
-    body.appendChild(root); 
+    body.appendChild(forceFontLoad); 
   }
   return root;
 }

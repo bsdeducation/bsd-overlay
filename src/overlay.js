@@ -1,6 +1,9 @@
 import {icon, id, text, position, style, size, onClick, layout} from './props';
 import Widget from './Widget';
 
+/**
+ * This is a button widget. It can have text, an icon or both.
+ */
 class Button extends Widget {
   constructor(props) {
     super(
@@ -10,32 +13,53 @@ class Button extends Widget {
     );
   }
 
+  /**
+   * Change the [FontAwesome](https://fontawesome.com) icon used on the button.
+   */
   set icon(v) {
     this.updateProp('icon', v);
   }
 
-  set id(v) {
-    this.updateProp('id', v);
-  }
-
+  /**
+   * Change the text on the button. 
+   */
   set text(v) {
     this.updateProp('text', v);
   }
 
+  /**
+   * Change the position of the button.
+   */
   set position(v) {
     this.updateProp('position', v);
   }
 
+  /**
+   * Change the style of the button: 'primary', 'success', 'danger' or 'default'. This affects the button colour.
+   */
   set style(v) {
     this.updateProp('style', v);
   }
 
+  /**
+   * Change the size of the button: 'default' or 'large'.
+   */
   set size(v) {
     this.updateProp('size', v);
   }
 
+  /**
+   * Change the onClick handler for the button.
+   */
   set onClick(v) {
     this.updateProp('onClick', v);
+  }
+ 
+  /**
+   * Change the CSS `id` of the button, but this shouldn't ordinarily be required.
+   */
+  set id(v) {
+    this.updateProp('id', v);
   }
 }
 

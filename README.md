@@ -33,6 +33,8 @@ The design for the UI controls currently includes plans for:
 * multi-page overlay 
 * success page
 
+Check out an example [here](../example/index.html).
+
 ## Concepts
 
 All controls in this library can have their properties modified after construction e.g.
