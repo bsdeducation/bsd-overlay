@@ -9,7 +9,7 @@
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "example": "open ./example/index.html",
-    "doc": "jsdoc -c jsdoc.conf.json -u tutorials/ --readme README.md",
+    "doc": "jsdoc -c jsdoc.conf.json -u tutorials/ --readme tutorials/main.md",
     "doc:open": "open ./docs/index.html",
     "postinstall": "cd host && yarn",
     "host": "./host/start.sh",

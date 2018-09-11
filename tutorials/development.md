@@ -56,7 +56,7 @@ Remember, this is not a general purpose UI component toolkit like bootstrap. It'
 
 In order to publish to BSD Online, you'll need the [AWS command line tools](https://docs.aws.amazon.com/cli/latest/userguide/installing.html). Once installed, run `aws configure` and enter the user id and secret access key. Ask Neil or Ding.
 
-After that, you can easily publish this module to BSD Online with `yarn publish`. You will be asked to enter a new version number. Once the publishing process is complete, the new version and the docs will be available within BSD Online's resources, for example [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.1/docs/index.html).
+After that, you can easily publish this module to BSD Online with `yarn publish`. You will be asked to enter a new version number. Once the publishing process is complete, the new version and the docs will be available within BSD Online's resources, for example [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.5/docs/index.html).
 
 ## To-do
 
@@ -65,6 +65,6 @@ After that, you can easily publish this module to BSD Online with `yarn publish`
 * support tooltips on buttons
 * support container anchor options as an alternative to 'position' i.e. we could simply specify any of these as the 'anchor' property: top, top-left, top-right, left, right, bottom, bottom-left, bottom-right
 * support custom className on widgets
-* adjust the docs style: put GLOBAL at the TOP; add search, add tutorials to navigation
+* adjust the docs style: put GLOBAL above CLASSES; add search, add tutorials to navigation
 * in Widget.js, applyProps should compare props on the old/new proxies before applying the diff to the DOM
 * add more widgets, of course :)

@@ -20,6 +20,14 @@ The goals of this library are:
 
 This library is supposed to make it easier to define UI controls as an overlay above the primary content of the interactive step. The overlay controls are not supposed to be the primary content so they should not be highly configurable, attempting to solve all possible use cases.
 
+The currently supported widgets are:
+* {@link button} - with a text label and/or icon
+* {@link container} - to simplify layout and positioning of other widgets
+
+Check out an example [here](../example/index.html).
+
+## Concepts
+
 All controls in this library can have their properties modified after construction e.g.
 ```javascript
 const b = $BSD.overlay.button({
@@ -31,6 +39,32 @@ const b = $BSD.overlay.button({
 
 All controls have a `delete()` function which will immediately remove the control from the DOM. If the control is a container which was used for creating other controls then all the child controls will also be removed.
 
-## More documentation
+## Dependencies
 
-Please visit [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.5/docs/index.html) for the full documentation.
+This library uses [FontAwesome](https://fontawesome.com) for all icons. Currently using version 5.3.1. Icons from other sources are not supported.
+
+This library has no other run-time dependencies.
+
+## Development
+
+Content creators are welcome (and encouraged!) to extend this library to support additional controls. Please check out the {@tutorial development}.
+
+## Design
+
+The design for the UI controls also includes plans for:
+* a platform-linked refresh button
+* slider
+* progress bar
+* timers
+* meters
+* forms including text fields and combo boxes
+* modal dialogs
+* multi-page overlay 
+* success page
+
+![](design_1.png)
+![](design_2.png)
+![](design_3.png)
+![](design_4.png)
+![](design_5.png)
+![](design_6.png)
