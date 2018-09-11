@@ -31,7 +31,7 @@ Within your 'BSD.online' directory run `yarn` to install all dependencies.
 > * `doc:open` - open the docs generated locally within a browser
 > * `host` - shares your local `dist` directory publically, so that you can test your changes directly on BSD Online
 > * `dev` - runs `watch` and `host`
-> * `publish` - publish the built module and docs to BSD Online (this requires configuration which is not included in this repository)
+> * `pub` - publish the built module and docs to BSD Online (this requires configuration which is not included in this repository)
 ---
 
 You can test out your own changes on BSD Online by using `yarn run dev`. This runs `yarn run watch` (which uses rollup in watch mode to automatically rebuild the library) and `yarn run host` which exposes your local `dist` directory to the world. Look in the console output for something like 
