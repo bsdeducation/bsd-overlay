@@ -1,4 +1,4 @@
-# BSD.overlay
+# BSD Overlay
 
 This is a helper library for [BSD Online](https://app.bsd.education) content creators to easily add UI widgets as overlays to interactive steps. 
 

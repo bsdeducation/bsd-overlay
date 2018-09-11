@@ -75,7 +75,8 @@ class Button extends Widget {
  * This affects the button colour.
  * @param {string=} props.size - The size of the button: 'default' or 'large'.
  * @param {string=} props.id - This allows you to specify the CSS `id` of the button, but this shouldn't ordinarily be required.
- * 
+ * @returns an instance of a {@link Button}
+ *
  * @example
  * $BSD.overlay.button({
  *   position: { top: '20px', right: '20px' },

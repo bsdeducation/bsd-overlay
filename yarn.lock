@@ -16,10 +16,6 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@markvl/jsdoc-template@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@markvl/jsdoc-template/-/jsdoc-template-3.2.0.tgz#ea9b00e6f6a667989221a27de6ae15358f9be614"
-
 "@types/estree@0.0.39":
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
@@ -1342,6 +1338,10 @@ js2xmlparser@~3.0.0:
   resolved "https://registry.yarnpkg.com/js2xmlparser/-/js2xmlparser-3.0.0.tgz#3fb60eaa089c5440f9319f51760ccd07e2499733"
   dependencies:
     xmlcreate "^1.0.1"
+
+"jsdoc-template@https://github.com/bsdeducation/jsdoc-template.git":
+  version "3.2.0"
+  resolved "https://github.com/bsdeducation/jsdoc-template.git#03e1d39cf057a8faf626536ad38b5efb42646738"
 
 jsdoc@3.5.5:
   version "3.5.5"

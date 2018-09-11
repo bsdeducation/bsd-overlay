@@ -31,4 +31,4 @@ const b = $BSD.overlay.button({
 
 ## More documentation
 
-Please visit [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.7/docs/index.html) for the full documentation.
+Please visit [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.8/docs/index.html) for the full documentation.

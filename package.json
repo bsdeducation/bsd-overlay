@@ -1,6 +1,6 @@
 {
   "name": "bsd-overlay",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Overlay widget toolkit for BSD Online educational content",
   "author": "BSD Education",
   "license": "MIT",
@@ -19,11 +19,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@markvl/jsdoc-template": "3.2.0",
     "babel-core": "6.26.3",
     "babel-preset-es2015-rollup": "3.0.0",
     "concurrently": "4.0.1",
     "jsdoc": "3.5.5",
+    "jsdoc-template": "https://github.com/bsdeducation/jsdoc-template.git",
     "postcss-color-function": "4.0.1",
     "postcss-nested": "3.0.0",
     "postcss-variables": "1.1.1",
