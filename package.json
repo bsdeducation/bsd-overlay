@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "clean": "rm -rf docs && rm -rf dist",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "example": "open ./example/index.html",
@@ -11,7 +12,9 @@
     "doc:open": "open ./docs/index.html",
     "postinstall": "cd host && yarn",
     "host": "./host/start.sh",
-    "dev": "concurrently \"yarn run watch\" \"yarn run host\""
+    "dev": "concurrently \"yarn run watch\" \"yarn run host\"",
+    "prepublish": "yarn run doc",
+    "publish": "./publish/to_s3.sh"
   },
   "dependencies": {},
   "devDependencies": {

@@ -1,34 +1,15 @@
-import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss-modules';
-import resolve from 'rollup-plugin-node-resolve';
-import typescript from 'typescript'
-import typescriptPlugin from 'rollup-plugin-typescript2'
+import typescript from 'typescript';
+import typescriptPlugin from 'rollup-plugin-typescript2';
 
 export default {
-  input: ['src/index.js'],
-  experimentalCodeSplitting: true,
-  output: [
-    {
-      format: 'cjs',
-      dir: 'dist',
-      entryFileNames: '[name].js',
-    },
-    {
-      format: 'es',
-      dir: 'dist',
-      entryFileNames: '[name].es.js',
-    },
-  ],
+  input: 'src/index.js',
+  output: {
+    file: 'bsd-overlay.js',
+    format: 'iife',
+    dir: 'dist',
+  },
   plugins: [
-    resolve({
-      //only: [/^\.{0,2}\//],
-      jsnext: true,
-      main: true,
-      browser: true,
-    }),
-    commonjs({
-      inject: false
-    }),
     postcss({
       extract: false,
       plugins: [

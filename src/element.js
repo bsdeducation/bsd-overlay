@@ -7,14 +7,26 @@ css.rel = 'stylesheet';
 css.type = 'text/css';
 document.getElementsByTagName('head')[0].appendChild(css);
 
+let loadedFont = false;
 document.fonts.onloadingdone = (fontFaceSetEvent) => {
   for (let f of fontFaceSetEvent.fontfaces) {
     if (f.family.indexOf('Font Awesome') >= 0) {
       const root = getRoot();
       root.className = styles.loaded;
+      loadedFont = true;
     }
   }
 };
+setTimeout(
+  () => {
+    if (!loadedFont) {
+      root.className = styles.loaded;
+      loadedFont = true;
+      console.error('bsd.overlay - Failed to load FontAwesome');
+    }
+  },
+  3000
+);
 
 let root;
 function getRoot() {
@@ -22,7 +34,7 @@ function getRoot() {
     root = document.createElement('div');
     root.id = styles.root;
     const body = document.getElementsByTagName('body')[0];
-    body.appendChild(root);
+    body.appendChild(root); 
   }
   return root;
 }
