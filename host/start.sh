@@ -13,7 +13,7 @@ NC='\033[0m' # No Color
 echo "--------------------------------------"
 echo "You can now use the version which is currently in 'dist' from the web."
 echo "Just add the following to your HTML:"
-echo -e "${COLOUR}<script type=\"text/javascript\" src=\"https://$SUBDOMAIN.$DOMAIN/dist/index.js\"></script>${NC}"
+echo -e "${COLOUR}<script type=\"text/javascript\" src=\"https://$SUBDOMAIN.$DOMAIN/dist/bsd-overlay.js\"></script>${NC}"
 echo
 
 # Start the serveo tunnel to expose this port to the world.
