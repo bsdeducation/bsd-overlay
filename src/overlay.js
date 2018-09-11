@@ -115,7 +115,9 @@ function button(props) {
   }
 
   /**
-   * Constructs a {@link Button} component
+   * Constructs a {@link Button} component. Unlike the global {@link button} function, this method
+   * does not require the `position` prop to be specified. The container will handle positioning 
+   * automatically.
    * @param {*} buttonProps 
    */
   button(buttonProps) {

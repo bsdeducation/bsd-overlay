@@ -63,6 +63,7 @@ After that, you can easily publish this module to BSD Online with `yarn publish`
 * include FontAwesome as a direct dependency so that we don't depend on an external CDN
 * add animation/effect on button clicks
 * support tooltips on buttons
+* improve error checking on props to ensure required props are present
 * support container anchor options as an alternative to 'position' i.e. we could simply specify any of these as the 'anchor' property: top, top-left, top-right, left, right, bottom, bottom-left, bottom-right
 * support custom className on widgets
 * adjust the docs style: put GLOBAL above CLASSES; add search, add tutorials to navigation

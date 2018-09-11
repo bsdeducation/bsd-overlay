@@ -14,7 +14,7 @@
     "plugins/markdown"
   ],
   "templates": {
-    "referenceTitle": "BSD Overlay JavaScript API",
+    "referenceTitle": "BSD Overlay JS API",
     "disableSort": false,
     "cleverLinks": false,
     "monospaceLinks": false,
@@ -30,7 +30,6 @@
     "encoding": "utf8",
     "private": true,
     "recurse": true,
-    "template": "../jsdoc-template-bsdeducation",
-    "Xtemplate": "./node_modules/@markvl/jsdoc-template"
+    "template": "./node_modules/@markvl/jsdoc-template"
   }
 }

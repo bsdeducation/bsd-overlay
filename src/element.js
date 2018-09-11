@@ -18,7 +18,7 @@ document.fonts.onloadingdone = (fontFaceSetEvent) => {
 setTimeout(
   () => {
     if (!loadingCompleted) {
-      console.error('bsd.overlay - Failed to load font');
+      console.error('bsd-overlay - Failed to load font');
     }
     loadComplete();
   },
