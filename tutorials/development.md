@@ -1,4 +1,4 @@
-## Intro
+## Overview
 
 In order to contribute to the BSD.overlay module you'll need a GitHub account. At a high level, the process for contributing to this module is:
 1. Fork the repository in GitHub.
@@ -41,7 +41,7 @@ You can test out your own changes on BSD Online by using `yarn run dev`. This ru
 ```
 and paste that into the HTML file for the interactive step you're working on. This will let you test out your local changes on BSD Online without having to publish anything, or risk breaking any existing content.
 
-## Guidelines
+## Guidelines for contributions
 
 Please follow these guidelines if you'd like to have your changes merged into the official module:
 
@@ -57,3 +57,14 @@ Remember, this is not a general purpose UI component toolkit like bootstrap. It'
 In order to publish to BSD Online, you'll need the [AWS command line tools](https://docs.aws.amazon.com/cli/latest/userguide/installing.html). Once installed, run `aws configure` and enter the user id and secret access key. Ask Neil or Ding.
 
 After that, you can easily publish this module to BSD Online with `yarn publish`. You will be asked to enter a new version number. Once the publishing process is complete, the new version and the docs will be available within BSD Online's resources, for example [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.1/docs/index.html).
+
+## To-do
+
+* include FontAwesome as a direct dependency so that we don't depend on an external CDN
+* add animation/effect on button clicks
+* support tooltips on buttons
+* support container anchor options as an alternative to 'position' i.e. we could simply specify any of these as the 'anchor' property: top, top-left, top-right, left, right, bottom, bottom-left, bottom-right
+* support custom className on widgets
+* adjust the docs style: put GLOBAL at the TOP; add search, add tutorials to navigation
+* in Widget.js, applyProps should compare props on the old/new proxies before applying the diff to the DOM
+* add more widgets, of course :)

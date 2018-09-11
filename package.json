@@ -1,7 +1,8 @@
 {
-  "name": "@bsd/overlay",
+  "name": "bsd-overlay",
   "version": "0.1.2",
-  "main": "index.js",
+  "description": "Overlay widget toolkit for BSD Online educational content",
+  "author": "BSD Education",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf docs && rm -rf dist",

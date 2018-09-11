@@ -131,7 +131,12 @@ function button(props) {
  * @param {Object} props
  * @param {string} props.position - The position of the container. The position is always 'fixed' in CSS, but this parameter allows you to specify offsets from `left`, `right`, `top` and `bottom`.
  * @param {string} props.layout - The layout of the container: 'row' or 'column'.
- * @returns an instance of a {@link Container} 
+ * @returns an instance of a {@link Container}
+ * 
+ * @example
+ * const c = $BSD.overlay.container({ position: { bottom: '20px', right: '20px' } });
+ * c.button({ icon: 'chevron-left', onClick: goLeft });
+ * c.button({ icon: 'chevron-right', onClick: goRight });
  */
 function container(props) {
   return new Container(props);
