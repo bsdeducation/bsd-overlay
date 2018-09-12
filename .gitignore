@@ -4,3 +4,4 @@ dist
 src/*.d.ts
 docs
 yarn-error.log
+tutorials/main.x.md

@@ -435,8 +435,8 @@ class Vector{
 // init canvas
 let canvas = document.createElement("canvas"),
   ctx = canvas.getContext("2d"),
-  H = (canvas.height = 600),
-  W = (canvas.width = 600);
+  H = (canvas.height = 800),
+  W = (canvas.width = 1200);
 document.body.appendChild(canvas);
 ctx.lineCap = "round";
 
@@ -655,7 +655,7 @@ let field = {
   plants: [],
   init: function() {
     this.plants = [];
-    let div = Math.floor(Util.random(16, 16));
+    let div = Math.floor(Util.random(20, 20));
     noise.seed(Math.random());
 
     let perspective = Util.random(0.5, 1);

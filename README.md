@@ -1,6 +1,6 @@
 # BSD Overlay
 
-This is a helper library for [BSD Online](https://app.bsd.education) content creators to easily add UI widgets as overlays to interactive steps. 
+This is a helper library for [BSD Online](https://app.bsd.education) content creators to easily add UI widgets as overlays to content such as interactive steps, code steps, sandboxes. 
 
 For example:
 ```javascript
@@ -31,4 +31,4 @@ const b = $BSD.overlay.button({
 
 ## More documentation
 
-Please visit [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.8/docs/index.html) for the full documentation.
+Please visit [here](https://app.bsd.education/resources/modules/bsd-overlay/0.1.9/docs/index.html) for the full documentation.

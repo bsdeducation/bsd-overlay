@@ -1,6 +1,6 @@
 {
   "name": "bsd-overlay",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Overlay widget toolkit for BSD Online educational content",
   "author": "BSD Education",
   "license": "MIT",
@@ -9,13 +9,14 @@
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "example": "open ./example/index.html",
-    "doc": "jsdoc -c jsdoc.conf.json -u tutorials/ --readme tutorials/main.md",
+    "predoc": "./scripts/predoc.sh",
+    "doc": "jsdoc -c jsdoc.conf.json -u tutorials/ --readme tutorials/main.x.md",
     "doc:open": "open ./docs/index.html",
     "postinstall": "cd host && yarn",
     "host": "./host/start.sh",
     "dev": "concurrently \"yarn run watch\" \"yarn run host\"",
     "prepub": "yarn run doc && yarn run build && yarn version",
-    "pub": "./publish/to_s3.sh"
+    "pub": "./scripts/publish.sh"
   },
   "dependencies": {},
   "devDependencies": {

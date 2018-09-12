@@ -1,6 +1,6 @@
 # BSD Overlay
 
-This is a helper library for [BSD Online](https://app.bsd.education) content creators to easily add UI widgets as overlays to interactive steps. 
+This is a helper library for [BSD Online](https://app.bsd.education) content creators to easily add UI widgets as overlays to content such as interactive steps, code steps, sandboxes. 
 
 For example:
 ```javascript
@@ -24,7 +24,13 @@ The currently supported widgets are:
 * {@link button} - with a text label and/or icon
 * {@link container} - to simplify layout and positioning of other widgets
 
-Check out an example [here](../example/index.html).
+The minified JavaScript bundle is [here](https://app.bsd.education/resources/modules/bsd-overlay/%VERSION%/bsd-overlay-%VERSION%.js). For now, use a `script` element in your HTML to include the library.
+```html
+<script type="text/javascript" src="https://app.bsd.education/resources/modules/bsd-overlay/%VERSION%/bsd-overlay-%VERSION%.js"></script>
+```
+In a later release of BSD Online, this will be automatically inserted.
+
+[Here](../example/index.html) is an example of BSD Overlay being used, showing direct button placement, use of containers, changing widget props after construction and widget deletion.
 
 ## Concepts
 
