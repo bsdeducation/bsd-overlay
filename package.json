@@ -15,7 +15,7 @@
     "postinstall": "cd host && yarn",
     "host": "./host/start.sh",
     "dev": "concurrently \"yarn run watch\" \"yarn run host\"",
-    "prepub": "yarn run doc && yarn run build && yarn version",
+    "prepub": "yarn version && yarn run doc && yarn run build",
     "pub": "./scripts/publish.sh"
   },
   "dependencies": {},
